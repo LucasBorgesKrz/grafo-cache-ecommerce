@@ -1,0 +1,26 @@
+# Parte 1 - Key design do carrinho
+# Chave:     cart:user:{id}  (ex: cart:user:1) | para visitante: cart:session:{id}
+# Estrutura: Hash -> campo "produto:{id}", valor = quantidade (numero)
+# TTL:       86400 segundos (24h) para carrinho abandonado
+
+# Parte 2 - Adicionar itens ao carrinho do usuario 1
+HSET cart:user:1 produto:103 1
+HSET cart:user:1 produto:102 2
+
+# Aumentar a quantidade de um item sem reescrever o carrinho
+HINCRBY cart:user:1 produto:103 1
+
+# Ler o carrinho completo
+HGETALL cart:user:1
+
+# Definir expiracao de 24h (simula carrinho abandonado) e conferir
+EXPIRE cart:user:1 86400
+TTL cart:user:1
+
+# Parte 3 (bonus) - Invalidacao no checkout
+# O pedido e gravado no banco principal ANTES; so depois o carrinho e apagado
+DEL cart:user:1
+
+# Conferir que o carrinho sumiu
+EXISTS cart:user:1
+HGETALL cart:user:1

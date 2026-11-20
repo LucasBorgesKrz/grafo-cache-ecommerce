@@ -190,4 +190,3 @@ carrinho abandonado expira sozinho, sem rotina de limpeza. O cuidado é que a me
 volátil, por isso o pedido é gravado no banco principal no checkout, antes de apagar o
 carrinho do cache.
 
-**Resumo:** o

@@ -3,6 +3,8 @@
 Projeto de modelagem NoSQL especializada: um **grafo** (Neo4j/Cypher) para um sistema
 de recomendação de e-commerce e o **key design** de um cache de carrinho de compras (Redis).
 
+Aluno: Lucas Borges Krziminski
+
 ## Arquivos
 
 | Arquivo | Conteúdo |
